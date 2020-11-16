@@ -3,6 +3,7 @@
 ## Table of Contents
 * [Description](#description)
 * [Repository](#repository)
+* [Content-URL](#content-url)
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
@@ -17,21 +18,28 @@ Creates a formatted README.md file using Node.js.  You are prompted with several
 ## Repository
 https://github.com/gehanstedt/readme-generator
 
+## Content-URL
+(none)
+
 ## Installation
 Install Node.js (recommend 14.15.0) from https://nodejs.org.  
 
 Fork repo and clone down to your system.  
 
-In the cloned directory, initialize Node package manager - npm init.  
+In the cloned directory, initialize Node package manager - ```npm init```.  
 
-Install npm package "inquirer" - npm install inquirer.  
+Install npm package "inquirer" - ```npm install inquirer```.  
 
 If you will commit back to GitHub, recommend addding a .gitignore file to ignore directories node_modules and .DS_Store. 
+
+If you are using Chrome, you may wish to add Markdown Viewer to make it easier to see the Mardown text properly formatted.  You can obtain at:
+https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk?hl=en.
+Also note that you'll need to enable viewing of local files in the settings of Markdown Viewer.
 
 ## Usage
 From where the repo was installed, run: 
 
-node readme-generator.js [output_file]
+```node readme-generator.js [output_file] ```
 
 By default, readme-generator creates a file called NEWREADME.md.  But, you can change this by specifying a file name.  The file created will be in Markdown format.
 

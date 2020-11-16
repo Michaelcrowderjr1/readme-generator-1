@@ -109,6 +109,11 @@ inquirer
     },
     {
       type: "input",
+      message: "What is the content URL, if any?",
+      name: "contentURL"
+    },
+    {
+      type: "input",
       message: "What is the description for your project?",
       name: "description"
     },
@@ -182,6 +187,7 @@ inquirer
 ## Table of Contents
 * [Description](#description)
 * [Repository](#repository)
+* [Content-URL](#content-url)
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
@@ -194,6 +200,9 @@ ${response.description}
 
 ## Repository
 https://github.com/${response.githubUsername}/${response.repoName}
+
+## Content-URL
+${response.contentURL}
 
 ## Installation
 ${response.installationInstructions} 
