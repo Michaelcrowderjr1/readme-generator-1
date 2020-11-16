@@ -30,7 +30,7 @@ In the cloned directory, initialize Node package manager - ```npm init```.
 
 Install npm package "inquirer" - ```npm install inquirer```.  
 
-If you will commit back to GitHub, recommend addding a .gitignore file to ignore directories node_modules and .DS_Store. 
+If you will commit back to GitHub, recommend adding a .gitignore file to ignore directories node_modules and .DS_Store. 
 
 If you are using Chrome, you may wish to add Markdown Viewer to make it easier to see the Mardown text properly formatted.  You can obtain at:
 https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk?hl=en.
