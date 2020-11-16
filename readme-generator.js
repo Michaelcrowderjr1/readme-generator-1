@@ -80,7 +80,7 @@ if (argc === 3) {
                          
 inquirer
   .prompt([
-    {
+/*    {
       type: "input",
       message: "What is the title of your project?",
       name: "title"
@@ -100,12 +100,14 @@ inquirer
       message: "What are instructions for using your application?",
       name: "usageInstructions"
     },
+*/
     {
       type: "list",
       message: "What license do you want to associate with your project?",
       name: "licenseSelection",
       choices: licenseArrayTypes
     },
+/*
     {
       type: "input",
       message: "Who contributed to this project?",
@@ -126,10 +128,60 @@ inquirer
       message: "What is your email address?",
       name: "emailAddress"
     },
-  ])
+*/
+])
   .then(function(response) {
+    response  = {
+      title: "MyTitle",
+      description: "My Description",
+      installationInstructions: "Installation Instructions",
+      usageInstructions: "How to use it....",
+      licenseSelection: response.licenseSelection,
+      contributors: "Me and someone else",
+      testing: "It was never tested",
+      gitHubUsername: "gehanstedt",
+      emailAddress: "spamgreghere@gmail.com",
+    }
 
-    console.log (response);
+    // console.log (response);
+
+    writeThis += `#${response.title}
+    
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
+* [Contributing](#contributing)
+* [Credits](#credits)
+* [Tests](#tests)
+* [Questions](#questions)
+* [Credits](#credits)
+
+## Description
+${response.description}
+    
+## Installation
+${response.installationInstructions} 
+
+## Usage
+${response.usageInstructions}
+
+## License
+    \n`;
+
+    // console.log (licenseArrayTypes.short);
+    // const selectedLicenseArrayIndex = licenseArrayTypes.short.findIndex (response.licenseSelection);
+
+    let selectedLicenseArrayIndex = licenseArrayTypes.findIndex( element => {
+      if (element.short === response.licenseSelection) {
+        return true;
+      }
+    });
+
+    console.log (`Selected license array index: ${selectedLicenseArrayIndex}`);
+
+    // console.log (writeThis);
 
 /*     if (response.confirm === response.password) {
       console.log (`${response.name}, ${response.location}, ${response.bio}, ${response.githubUsername}`);
