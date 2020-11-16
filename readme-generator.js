@@ -5,6 +5,10 @@ var argc = process.argv.length;
 var argv = process.argv;
 var selectedBadgeImageURL;
 var outputFilname = "NEWREADME.md"
+
+// Build the licenseArrayTypes constant.  The elements name, value, short will be used by npm inquirer
+// to prompt the user on which license to use.  badgeURL is the URL to the appropriate badge and 
+// licenseURL is the URL to the license text.
 const licenseArrayTypes = [{
                             name: "GNU AGPLv3",
                             value: "GNU AGPLv3",
@@ -58,35 +62,50 @@ const licenseArrayTypes = [{
                             name: "None",
                             value: "None",
                             short: "None",
-                            badgeURL: "N/A",
-                            licenseURL: "N/A"
+                            badgeURL: "",
+                            licenseURL: ""
                           }
                          ];
 
+// If more than three arguments, show the usage information.  Ignore indenting.                        
 if (argc > 3) {
-  console.log (`Usage:  `);
-  console.log (`   node readme-generator.js [output_filename]`);
-  console.log (``);
-  console.log (`   readme-generator will generate a readme file (Markdown format).  By default, the file created`);
-  console.log (`   is NEWREADME.md to avoid conflicts with the project's README.md.  But, you can specify an alternate`);
-  console.log (`   filename as an optional parameter.`);
-  console.log (``);
-  console.log (`   output_filename - (optional) - write out to your specified file instead of`);
-  console.log (`                     NEWREADME.md`);
+  console.log (`Usage:  
+  node readme-generator.js [output_filename]
+  readme-generator will generate a readme file (Markdown format).  By default, the file created is 
+  NEWREADME.md to avoid conflicts with the project's README.md.  But, you can specify an alternate  
+  filename as an optional parameter.  
+  
+  output_filename - (optional) - write out to your specified file instead of NEWREADME.md  
+  `);
+  // Resume normal indenting
 
+  // Since we had too many arguments, let's just exit with a return
   return;
 }
 
+// Test if user entered one argument.  If so, we will assume that is the filename they want to 
+// which they want to write the generated readme.
 else if (argc === 3) {
   outputFilname = argv [2];
 }
-                         
+
+// Use npm inquirer to prompt user for several aspects of the project details
 inquirer
   .prompt([
     {
       type: "input",
       message: "What is the title of your project?",
       name: "title"
+    },
+    {
+      type: "input",
+      message: "What is your GitHub Username?",
+      name: "githubUsername"
+    },
+    {
+      type: "input",
+      message: "What is GitHub project name?  Should be the same as the last part of the repo URL.",
+      name: "repoName"
     },
     {
       type: "input",
@@ -100,7 +119,7 @@ inquirer
     },
     {
       type: "input",
-      message: "What are instructions for using your application?",
+      message: "How is your application used?",
       name: "usageInstructions"
     },
     {
@@ -121,21 +140,17 @@ inquirer
     },
     {
       type: "input",
-      message: "What is your GitHub Username?",
-      name: "githubUsername"
-    },
-    {
-      type: "input",
       message: "What is your email address?",
       name: "emailAddress"
     },
 ])
   .then(function(response) {
 
-    /* This was used during testing to avoid using prompts
+    /* This was used during testing to avoid using prompts during debugging
     response  = {
       title: "MyTitle",
       description: "My Description",
+      repoName: "my-repo",
       installationInstructions: "Installation Instructions",
       usageInstructions: "How to use it....",
       licenseSelection: response.licenseSelection,
@@ -153,7 +168,7 @@ inquirer
       }
     });
 
-    if (response.short === "None") {
+    if (licenseArrayTypes[selectedLicenseArrayIndex].short === "None") {
       selectedBadgeImageURL = "";
     }
 
@@ -165,17 +180,21 @@ inquirer
     writeThis += `# ${response.title} ${selectedBadgeImageURL}
     
 ## Table of Contents
+* [Description](#description)
+* [Repository](#repository)
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
 * [Contributing](#contributing)
-* [Credits](#credits)
-* [Tests](#tests)
+* [Testing](#testing)
 * [Questions](#questions)
 
 ## Description
 ${response.description}
-    
+
+## Repository
+https://github.com/${response.githubUsername}/${response.repoName}
+
 ## Installation
 ${response.installationInstructions} 
 
@@ -190,16 +209,17 @@ ${licenseArrayTypes[selectedLicenseArrayIndex].licenseURL}
 ## Contributing
 ${response.contribution}
 
-## Tests
+## Testing
 ${response.testing}
 
 ## Questions
-GitHub Portal:  http://github.com/${response.githubUsername}
+GitHub Portal:  https://github.com/${response.githubUsername}
+
 Email:  ${response.emailAddress}
 
 Generated by readme-generator.js - Copyright ©2020 G Dog Enterprises
       \n`;
-    // Completed load writeThis - normal indenting continues
+    // Completed load writeThis variable - normal indenting continues
 
     // Write file
     fs.writeFile (outputFilname,

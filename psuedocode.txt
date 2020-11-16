@@ -14,7 +14,7 @@ Using Node.js inquirer, obtain the following:
     - Boost Software License - [![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)
     - The Unlicense - [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
     - None
-- contributing - who contributed to this project
+- contribution - guidelines for contributing to this project
 - tests - how was it tested, what systems/platforms - test section
 - githubUsername - added to Questions section with link to GitHub profile
 - emailAddress - added to Questions section with instructions on how to contact
