@@ -1,0 +1,31 @@
+When run, look to see if an argument is passed.  This would be an alternate filename to the default NEWREADME.md
+
+Using Node.js inquirer, obtain the following:
+- title - Title of project, displayed in title section
+- description - description of project - description section
+- installation - how to install - installation section
+- usage - how to use - usage section
+- license - choice of license - license section - taken from https://choosealicense.com/licenses/
+    - GNU AGPLv3 - [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+    - GNU GPL 3 - [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+    - MIT License - [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+    - Mozilla Public License- [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
+    - Apache License 2.0 - [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+    - Boost Software License - [![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)
+    - The Unlicense - [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
+    - None
+- contributing - who contributed to this project
+- tests - how was it tested, what systems/platforms - test section
+- githubUsername - added to Questions section with link to GitHub profile
+- emailAddress - added to Questions section with instructions on how to contact
+
+Once all items have been entered, write to file NEWREADME.md (unless alternate was first argument into the command)
+Title - also have badge icon with link to license
+Description
+Table of Contents - generated with links to the below sections
+Installation
+Usage
+License
+Contributing
+Tests
+Questions
